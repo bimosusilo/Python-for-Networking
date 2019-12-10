@@ -1,0 +1,11 @@
+#get device output
+
+import netmiko
+
+
+connection = netmiko.ConnectHandler(ip="<ip-address>", device_type="cisco_ios", username="<user>", password="<password>")
+
+print(connection.send_command("show ip int br | ex ass"))
+
+
+connection.disconnect()
