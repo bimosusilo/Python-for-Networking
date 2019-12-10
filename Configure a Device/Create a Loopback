@@ -1,0 +1,17 @@
+import netmiko
+
+
+config = netmiko.ConnectHandler(ip="<ip-address>", device_type="cisco_ios", username="<username>", password="<password>")
+
+config_loopback0 = [
+'interface loopback 0',
+'ip address 1.1.1.1 255.255.255.255',
+'no shutdown']
+
+output = config.send_config_set(config_loopback0)
+print (output)
+
+print(config.send_command("show ip int br | ex una"))
+print(config.send_command("show run interface l0"))
+
+config.disconnect()
